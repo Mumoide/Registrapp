@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-grid>
+    <ion-toolbar color="duoc">
+      <ion-title class="ion-text-center" style="position:relative; right:2em" color="medium">Log in</ion-title>
+
+      <ion-buttons slot="start">
+
+        <ion-avatar>
+          <!-- <img src="/assets/Mike_Tyson.jpg"> -->
+          <ion-img src="/assets/duoc-logo.png"></ion-img>
+        </ion-avatar>
+
+        <!-- <img src="/assets/Mike_Tyson.jpg"> -->
+
+
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+
+        <ion-input type="text"></ion-input>
+      </ion-item>
+        <ion-item class="margin-bot">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-button class="submit-btn" class="margin" expand="block" type="submit" color="duoc2" [routerLink]="'/profesor'">Acceder</ion-button>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+    <p class="centrar">
+      Perdiste tu cuenta? <a>Recuperala aca.</a>
+    </p>
+</ion-content>
