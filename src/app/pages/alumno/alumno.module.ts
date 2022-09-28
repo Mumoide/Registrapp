@@ -9,6 +9,7 @@ import { AlumnoPageRoutingModule } from './alumno-routing.module';
 import { AlumnoPage } from './alumno.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
+
 @NgModule({
   imports: [
     CommonModule,
