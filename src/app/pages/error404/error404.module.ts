@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { Error404PageRoutingModule } from './error404-routing.module';
 
-import { LoginPage } from './login.page';
+import { Error404Page } from './error404.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -14,10 +14,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
-    ReactiveFormsModule,
+    Error404PageRoutingModule,
     ComponentsModule
   ],
-  declarations: [LoginPage]
+  declarations: [Error404Page]
 })
-export class LoginPageModule {}
+export class Error404PageModule {}

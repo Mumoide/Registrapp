@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>error404</ion-title>
+        <ion-buttons slot="end">
+          <ion-back-button defaultHref="/" text="Regresar" color="primary" mode="ios"></ion-back-button>
+
+        </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-lg="6" offset-lg="3" size-md="8" offset-md="2" size-sm="10" offset-sm="1" size="12">
+        <ion-img src="/assets/error404.png"></ion-img>
+        <h6 class="centrar">PAGINA NO ENCONTRADA</h6>
+        <ion-button class="submit-btn" class="margin" expand="block" type="submit" color="duoc2" [routerLink]="'/login'">
+          Inicio</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
