@@ -11,10 +11,11 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class LoginPage implements OnInit {
 
+  valorReturn = false;
+
   usuario = new FormGroup({
-    user: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
-    pass: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]),
-    tipo: new FormControl('', [Validators.required]),
+    user: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
+    pass: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(12)])
   });
 
   tipoUsuario = [
@@ -62,31 +63,57 @@ export class LoginPage implements OnInit {
   sendDetailsWithState() {
     const navigationExtras: NavigationExtras = {
       state: { user: this.usuario.value.user,
-               pass: this.usuario.value.pass,
-               tipo: this.usuario.value.tipo }
+               pass: this.usuario.value.pass }
     };
-    this.router.navigate(['/alumno'], navigationExtras); // Esta linea es la que me permite navegar a otro page
+    if (this.currentUser === 'Profesor'){
+      this.router.navigate(['/profesor'], navigationExtras);
+    }else if(this.currentUser === 'Alumno'){
+      this.router.navigate(['/alumno'], navigationExtras);
+    } // Esta linea es la que me permite navegar a otro page
   }
 
 
   loginUser() {
+    if (this.currentUser === 'Profesor'){
     if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
       if (this.authService.isAuthenticated()){
-        this.authService.login(this.usuario.value.user, this.usuario.value.pass);
+        this.authService.loginProfe(this.usuario.value.user, this.usuario.value.pass);
       } else { this.presentAlert(); }
     } else { this.presentAlert();}
-  }
-
-  nextPage() {
-    console.log('entramos al metodo');
-    if ('mumo' === this.usuario.value.user && this.usuario.value.tipo === 'alumno') {
+  }else if(this.currentUser === 'Alumno'){
+      if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
+        if (this.authService.isAuthenticated()) {
+          this.authService.loginAlumno(this.usuario.value.user, this.usuario.value.pass);
+        } else { this.presentAlert(); }
+      } else { this.presentAlert(); }
       this.sendDetailsWithState();
-    } else {
-      this.presentAlert();
-    }
-
-    // this.navCtrl.navigateForward('/home');
+  }}
+  loginProfe() {
+    if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
+      this.authService.loginProfe(this.usuario.value.user, this.usuario.value.pass);
+      if (this.authService.isAuthenticated()) {
+        this.valorReturn = true;
+        this.sendDetailsWithState();
+      }
+      if (!this.authService.isAuthenticated()) {
+        this.valorReturn = false;
+      }
+      if (!this.valorReturn) {
+        this.presentAlert();
+      }
+    } else { this.presentAlert();}
+    return this.valorReturn;
   }
+  // nextPage() {
+  //   console.log('entramos al metodo');
+  //   if ('mumo' === this.usuario.value.user && this.usuario.value.tipo === 'alumno') {
+  //     this.sendDetailsWithState();
+  //   } else {
+  //     this.presentAlert();
+  //   }
+
+  //   // this.navCtrl.navigateForward('/home');
+  // }
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -103,6 +130,7 @@ export class LoginPage implements OnInit {
   }
 
   handleChange(ev) {
-    this.currentUser = ev.target.value;
+    this.currentUser = ev.target.value.type;
+    console.log(this.currentUser);
   }
 }
