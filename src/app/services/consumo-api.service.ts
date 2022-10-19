@@ -31,5 +31,23 @@ export class ConsumoAPIService {
     );
   }
 
+  updatePost(id, post): Observable<any> {
+    return this.http.put(this.apiURL + '/posts/' + id, post).pipe(
+      retry(3)
+    );
+  }
 
+  createPost(post): Observable<any> {
+    return this.http.post(this.apiURL+'/posts/',post,this.httpOptions).
+    pipe(
+      retry(3)
+      );
+  }
+
+  deletePost(post): Observable<any> {
+    return this.http.post(this.apiURL + '/posts/', post, this.httpOptions).
+      pipe(
+        retry(3)
+      );
+  }
 }
