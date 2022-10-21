@@ -20,6 +20,7 @@ export class AuthenticationService {
       this.ifLoggedIn();
     });
   }
+
   ifLoggedIn() {
     this.storage.get('USER_INFO').then((response) => {
       if (response) {
@@ -28,7 +29,11 @@ export class AuthenticationService {
     });
   }
   loginProfe(user, password) {
+    console.log('Entramos al login de profe');
     if (user === 'mumo') {
+      this.authState.next(true);
+      console.log('Verificamos que usuario = mumo, se crea constante, se guardan los datos');
+      console.log('se navega a /profesor y se cambia authstate a true');
       const navigationExtras: NavigationExtras = {
         state: {
           userId: '1',
@@ -38,9 +43,11 @@ export class AuthenticationService {
       };
       this.storage.set('USER_INFO', navigationExtras).then((response) => {
         this.router.navigate(['/profesor'], navigationExtras);
-        this.authState.next(true);
       });
     } else {
+      this.authState.next(false);
+      console.log('Usuario noi es mumo, se crea constante, se guardan los datos');
+      console.log('se navega a /login y se cambia authstate a false');
       const navigationExtras: NavigationExtras = {
         state: {
           userId: '',
@@ -50,12 +57,12 @@ export class AuthenticationService {
       };
       this.storage.set('USER_INFO', navigationExtras).then((response) => {
         this.router.navigate(['/login'], navigationExtras);
-        this.authState.next(false);
       });
     }
   }
   loginAlumno(user, password) {
     if (user === 'mumo') {
+      this.authState.next(true);
       const navigationExtras: NavigationExtras = {
         state: {
           userId: '1',
@@ -65,9 +72,9 @@ export class AuthenticationService {
       };
       this.storage.set('USER_INFO', navigationExtras).then((response) => {
         this.router.navigate(['/alumno'], navigationExtras);
-        this.authState.next(true);
       });
     } else {
+      this.authState.next(false);
       const navigationExtras: NavigationExtras = {
         state: {
           userId: '',
@@ -77,7 +84,6 @@ export class AuthenticationService {
       };
       this.storage.set('USER_INFO', navigationExtras).then((response) => {
         this.router.navigate(['/login'], navigationExtras);
-        this.authState.next(false);
       });
     }
   }

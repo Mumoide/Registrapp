@@ -73,21 +73,58 @@ export class LoginPage implements OnInit {
   }
 
 
+  // loginUser() {
+  //   if (this.currentUser === 'Profesor'){
+  //     console.log('Entramos a profesor');
+  //   if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
+  //     console.log('Validamos que campos no esten vacios');
+  //     if (this.authService.isAuthenticated()){
+  //       console.log('Entregamos datos de los campos al servicio de autenticacion');
+  //       this.authService.loginProfe(this.usuario.value.user, this.usuario.value.pass);
+  //     } else { this.presentAlert(); }
+  //   } else { this.presentAlert();}
+  // }else if(this.currentUser === 'Alumno'){
+  //     console.log('Entramos a alumno');
+  //     if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
+  //       console.log('Validamos que campos no esten vacios');
+  //       if (this.authService.isAuthenticated()) {
+  //         console.log('Entregamos datos de los campos al servicio de autenticacion');
+  //         this.authService.loginAlumno(this.usuario.value.user, this.usuario.value.pass);
+  //       } else { this.presentAlert(); }
+  //     } else { this.presentAlert(); }
+  //     this.sendDetailsWithState();
+  // }}
+
   loginUser() {
     if (this.currentUser === 'Profesor'){
+      console.log('Entramos a profesor');
     if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
+      console.log('Validamos que campos no esten vacios');
+      this.authService.loginProfe(this.usuario.value.user, this.usuario.value.pass);
+      if (!this.authService.isAuthenticated()) {
+        this.presentAlert();
+        console.log('No se valido autenticacion');
+      }
       if (this.authService.isAuthenticated()){
-        this.authService.loginProfe(this.usuario.value.user, this.usuario.value.pass);
-      } else { this.presentAlert(); }
+        console.log('Validamos autenticacion');
+        this.sendDetailsWithState();;
+      }
     } else { this.presentAlert();}
   }else if(this.currentUser === 'Alumno'){
+      console.log('Entramos a alumno');
       if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
-        if (this.authService.isAuthenticated()) {
-          this.authService.loginAlumno(this.usuario.value.user, this.usuario.value.pass);
-        } else { this.presentAlert(); }
+        console.log('Validamos que campos no esten vacios');
+        this.authService.loginAlumno(this.usuario.value.user, this.usuario.value.pass);
+        if (!this.authService.isAuthenticated()) {
+          console.log('No se valido la autenticacion');
+          this.presentAlert();
+        }
+        if( this.authService.isAuthenticated())
+         { console.log('Validamos autenticacion');
+          this.sendDetailsWithState(); }
       } else { this.presentAlert(); }
-      this.sendDetailsWithState();
-  }}
+    } else { this.presentAlert(); }
+}
   loginProfe() {
     if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
       this.authService.loginProfe(this.usuario.value.user, this.usuario.value.pass);
