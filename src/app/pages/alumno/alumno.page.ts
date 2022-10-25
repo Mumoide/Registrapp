@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConsumoAPIService } from 'src/app/services/consumo-api.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 })
 export class AlumnoPage implements OnInit {
 
+  usuarios: Observable<any>;
   user: any;
   pass: any;
   message: string;
@@ -27,9 +29,19 @@ export class AlumnoPage implements OnInit {
    }
 
   ngOnInit() {
+    this.usuarios = this.consumoApi.getUsuarios();
   }
 
   mostrar() {
+    this.consumoApi.getPosts().subscribe((res) => {
+      this.message = '' + res[0].username;
+      this.titulo = '' + res[0].name;
+      console.log(res[0]);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  mostrarUsuario() {
     this.consumoApi.getPosts().subscribe((res) => {
       this.message = '' + res[0].username;
       this.titulo = '' + res[0].name;
@@ -83,6 +95,7 @@ export class AlumnoPage implements OnInit {
   }
 
   camara(){
+    console.log('Entramos a metodo camara');
     const options: CameraOptions= {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
@@ -97,4 +110,5 @@ export class AlumnoPage implements OnInit {
       console.log(err);
     });
   }
+
 }
