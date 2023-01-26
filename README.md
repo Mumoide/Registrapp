@@ -24,8 +24,8 @@ Esta pantalla contiene los datos del alumno que ingresó y la función para regi
 
 
 <img src="images/pantalla-alumno.png" height="600">
-<img src="images/pantalla-alumno-registrando.png" height="600">
-<img src="images/panta-alumno-asistencia.png" height="600">
+<img src="images/pantalla-alumno-registrando.jpg" height="600">
+<img src="images/panta-alumno-asistencia.jpg" height="600">
 
 
 Pantalla de profesor PC:
