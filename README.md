@@ -38,7 +38,7 @@ Mensaje desplegado una vez que se lee el código QR.
 
 Estado actualizado.
 
-<img src="images/panta-alumno-asistencia.jpg" height="600">
+<img src="images/pantalla-alumno.jpg" height="600">
 
 
 Pantalla de profesor PC:
