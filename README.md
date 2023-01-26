@@ -30,7 +30,7 @@ Pantalla alumno:
 Esta pantalla contiene los datos del alumno que ingresó y la función para registrar la asistencia utilizando la cámara para leer un código qr.
 
 
-<img src="images/pantalla-alumno.jpg" height="600">
+<img src="images/panta-alumno-asistencia.jpg" height="600">
 
 Mensaje desplegado una vez que se lee el código QR.
 
