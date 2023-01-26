@@ -28,7 +28,7 @@ Esta pantalla contiene los datos del alumno que ingresó y la función para regi
 
 <img src="images/pantalla-alumno.png" height="600">
 
-Mensaje desplegado una ve que se lee el código QR.
+Mensaje desplegado una vez que se lee el código QR.
 
 <img src="images/pantalla-alumno-registrando.jpg" height="600">
 
