@@ -1,9 +1,13 @@
 # Registrapp
 La aplicación Registrapp fue creada para la asignatura Programacion de Aplicaciones Mobile del DuocUC.
+
 Fue escrita en typescript usando el framework Ionic con Angular.
+
 Su función es para registrar asistencia de alumnos, se puede ingresar al sistema como alumno o como profesor, para registrar una asistencia o para desplegar la lista de alumnos con su estado de asistencia.
+
 En este caso no fue implementada una base de datos, ya que vimos API REST, por lo tanto la actualización de datos es mediante peticiones http.
  
+
 A continuación se presentarán las pantallas de la aplicación con una breve descripción:
 
 Pantalla principal:
