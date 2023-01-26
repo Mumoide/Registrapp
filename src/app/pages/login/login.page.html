@@ -47,11 +47,11 @@
           </ion-item>
         <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="text" formControlName="user"></ion-input>
+          <ion-input type="text" formControlName="user" minlength="4" maxlength="12"></ion-input>
         </ion-item>
           <ion-item class="margin-bot">
             <ion-label position="floating">Contraseña</ion-label>
-            <ion-input type="password" formControlName="pass"></ion-input>
+            <ion-input type="password" formControlName="pass" minlength="4" maxlength="12"></ion-input>
         </ion-item>
         <!-- <ion-button class="submit-btn" class="margin" expand="block" type="submit" color="duoc2" [routerLink]="'/profesor'">Acceder profesor</ion-button> -->
         <ion-button class="submit-btn" class="margin" expand="block" type="submit" color="duoc2" (click)=loginUser()>

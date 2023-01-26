@@ -9,9 +9,11 @@ import { AuthenticationService } from '../../services/authentication.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginPage implements OnInit {
 
   valorReturn = false;
+  data: any;
 
   usuario = new FormGroup({
     user: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
@@ -72,29 +74,6 @@ export class LoginPage implements OnInit {
     } // Esta linea es la que me permite navegar a otro page
   }
 
-
-  // loginUser() {
-  //   if (this.currentUser === 'Profesor'){
-  //     console.log('Entramos a profesor');
-  //   if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
-  //     console.log('Validamos que campos no esten vacios');
-  //     if (this.authService.isAuthenticated()){
-  //       console.log('Entregamos datos de los campos al servicio de autenticacion');
-  //       this.authService.loginProfe(this.usuario.value.user, this.usuario.value.pass);
-  //     } else { this.presentAlert(); }
-  //   } else { this.presentAlert();}
-  // }else if(this.currentUser === 'Alumno'){
-  //     console.log('Entramos a alumno');
-  //     if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
-  //       console.log('Validamos que campos no esten vacios');
-  //       if (this.authService.isAuthenticated()) {
-  //         console.log('Entregamos datos de los campos al servicio de autenticacion');
-  //         this.authService.loginAlumno(this.usuario.value.user, this.usuario.value.pass);
-  //       } else { this.presentAlert(); }
-  //     } else { this.presentAlert(); }
-  //     this.sendDetailsWithState();
-  // }}
-
   loginUser() {
     if (this.currentUser === 'Profesor'){
       console.log('Entramos a profesor');
@@ -110,7 +89,7 @@ export class LoginPage implements OnInit {
         this.sendDetailsWithState();;
       }
     } else { this.presentAlert();}
-  }else if(this.currentUser === 'Alumno'){
+    }else if(this.currentUser === 'Alumno'){
       console.log('Entramos a alumno');
       if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
         console.log('Validamos que campos no esten vacios');
@@ -125,32 +104,6 @@ export class LoginPage implements OnInit {
       } else { this.presentAlert(); }
     } else { this.presentAlert(); }
 }
-  loginProfe() {
-    if ((this.usuario.value.user.trim() !== '') && ((this.usuario.value.pass.trim() !== ''))) {
-      this.authService.loginProfe(this.usuario.value.user, this.usuario.value.pass);
-      if (this.authService.isAuthenticated()) {
-        this.valorReturn = true;
-        this.sendDetailsWithState();
-      }
-      if (!this.authService.isAuthenticated()) {
-        this.valorReturn = false;
-      }
-      if (!this.valorReturn) {
-        this.presentAlert();
-      }
-    } else { this.presentAlert();}
-    return this.valorReturn;
-  }
-  // nextPage() {
-  //   console.log('entramos al metodo');
-  //   if ('mumo' === this.usuario.value.user && this.usuario.value.tipo === 'alumno') {
-  //     this.sendDetailsWithState();
-  //   } else {
-  //     this.presentAlert();
-  //   }
-
-  //   // this.navCtrl.navigateForward('/home');
-  // }
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -170,4 +123,6 @@ export class LoginPage implements OnInit {
     this.currentUser = ev.target.value.type;
     console.log(this.currentUser);
   }
+
+
 }

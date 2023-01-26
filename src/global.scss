@@ -53,5 +53,10 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-item: center;
+  align-items: center;
+}
+
+body.scanner-active {
+  --background: transparent;
+  --ion-background-color: transparent;
 }

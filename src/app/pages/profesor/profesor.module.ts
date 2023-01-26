@@ -8,6 +8,7 @@ import { ProfesorPageRoutingModule } from './profesor-routing.module';
 
 import { ProfesorPage } from './profesor.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     ProfesorPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    QRCodeModule
   ],
   declarations: [ProfesorPage]
 })

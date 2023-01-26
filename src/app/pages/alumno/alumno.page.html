@@ -1,65 +1,80 @@
-<app-header titulo="Alumno"></app-header>
+<app-header titulo="Alumno" class="scanner-hide" [style.visibility]="contentVisibility"></app-header>
 
-<ion-content padding>
-    <div>
+<ion-content padding class="scanner-hide" [style.visibility]="contentVisibility">
+  <div>
+    <ion-row>
+      <ion-col size-lg="4" offset-lg="4" size-md="6" offset-md="3" size="8" offset="2">
+        <ion-card id="card" class="ion-text-center">
+          <ion-card-content>
+            <ion-img src="/assets/duoc-logo2.png"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div>
+    <ion-grid>
       <ion-row>
-        <ion-col size-lg="4" offset-lg="4" size-md="6" offset-md="3" size="8" offset="2">
-          <ion-card id="card" class="ion-text-center">
-            <ion-card-content>
-              <ion-img src="/assets/duoc-logo2.png"></ion-img>
-            </ion-card-content>
-          </ion-card>
+        <ion-col class="reducir" size-lg="5" offset-lg="3.5" size-md="6" offset-md="3" size-sm="8" offset-sm="2"
+          size="10" offset="1">
+          <ion-list>
+            <ion-item>
+              <div>
+                <h4 class="thick" style="display: inline;">Nombre de usuario</h4>
+                <p style="display: inline;"> {{nombre}} </p>
+              </div>
+            </ion-item>
+            <hr>
+            <ion-item>
+              <div>
+                <h4 class="thick" style="display: inline;">Email</h4>
+                <p style="display: inline;"> {{email}}</p>
+              </div>
+            </ion-item>
+            <hr>
+            <ion-item>
+              <div>
+                <h4 class="thick" style="display: inline;">Fecha</h4>
+                <p style="display: inline;"> {{dt}}</p>
+              </div>
+            </ion-item>
+            <ion-item>
+              <div>
+                <h4 class="thick" style="display: inline;">Asistencia</h4>
+                <p style="display: inline;"> {{asistencia}}</p>
+              </div>
+            </ion-item>
+          </ion-list>
         </ion-col>
       </ion-row>
-    </div>
-
-  <ion-row>
-    <ion-col class="centrar">
-      <h4>Nombre</h4>
-      <p>Mumo</p>
-      <hr>
-      <h4>Fecha</h4>
-      <p>12-12-12</p>
-      <ion-title>{{titulo}}</ion-title>
-    </ion-col>
-  </ion-row>
+    </ion-grid>
+  </div>
   <ion-grid>
     <div>
       <ion-row>
         <ion-col size-lg="4" offset-lg="4" size-md="6" offet-md="4" size="6" offset="3">
 
-          <ion-button class="submit-button" shape="round" type="submit" color="duoc2" class="center-button">Leer Codigo QR
+          <ion-button class="submit-button" shape="round" type="submit" color="duoc2" class="center-button" (click)=startScan()>Leer Codigo
+            QR
+
           </ion-button>
+          <div class="scanner-ui">
+            ...Scanner Interface
+          </div>
 
         </ion-col>
       </ion-row>
-      <ion-row>
+      <!-- <ion-row>
         <ion-col size-lg="4" offset-lg="4" size-md="6" offet-md="4" size="6" offset="3">
-          <ion-button class="delete-button" shape="round" color="duoc2" class="center-button" [routerLink]="'/login'">Cancelar
+          <ion-button class="delete-button" shape="round" color="duoc2" class="center-button" (click)=actualizar()>
+            Actualizar datos
           </ion-button>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
       <ion-row>
         <ion-col size-lg="4" offset-lg="4" size-md="6" offet-md="4" size="6" offset="3">
-          <ion-button class="delete-button" shape="round" color="duoc2" class="center-button" (click)=mostrar()>Mostrar datos
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size-lg="4" offset-lg="4" size-md="6" offet-md="4" size="6" offset="3">
-          <ion-button class="delete-button" shape="round" color="duoc2" class="center-button" (click)=actualizar()>Actualizar datos
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size-lg="4" offset-lg="4" size-md="6" offet-md="4" size="6" offset="3">
-          <ion-button class="delete-button" shape="round" color="duoc2" class="center-button" (click)=crear()>Crear datos
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size-lg="4" offset-lg="4" size-md="6" offet-md="4" size="6" offset="3">
-          <ion-button class="delete-button" shape="round" color="duoc2" class="center-button" (click)=camara()>Activar camara
+          <ion-button class="delete-button" shape="round" color="duoc2" class="center-button" (click)=authenticationService.logout()>
+            Cancelar
           </ion-button>
         </ion-col>
       </ion-row>
@@ -68,7 +83,7 @@
 
 </ion-content>
 
-<ion-footer class="ion-text-center" collapse="fade">
+<ion-footer class="ion-text-center, scanner-hide" [style.visibility]="contentVisibility" collapse="fade">
   <ion-fab vertical="top" horizontal="end">
     <ion-fab-button size="small" class="posicion" color="duoc3">
       <ion-icon name="add-outline"></ion-icon>
