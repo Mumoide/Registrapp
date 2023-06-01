@@ -49,5 +49,5 @@ Código QR.
 
 <img src="images/codigo%20qr.png" height="600">
 
-Listado actualizado desde la pantalla del PC.
+Listado actualizado desde la pantalla del PC, Jack registró su asistencia utilizando la cámara del celular.
 <img src="images/listado%20actualizado.png" height="600">
